@@ -7,6 +7,7 @@
     <title>The Band</title>
     <link rel="icon" href="./assets/img/Rock_Band_logo.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="./assets/CSS/styles.css">
+    <link rel="stylesheet" href="./assets/CSS/responsive.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons/themify-icons.css">
 </head>
 <body>
@@ -35,6 +36,10 @@
             <!-- Begin: Search button -->
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
             </div>
             <!-- End: Search button -->
         </div>
@@ -170,6 +175,36 @@
         </div>
 
     </div>
+
+    <!-- Begin: mobile menu buton click event -->
+    <script>
+        var header = document.getElementById('header');
+        // mobile-menu
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHight = header.clientHeight;
+        
+
+        // close and open mobile menu
+        mobileMenu.onclick = function() {
+            var isClose = header.clientHeight === headerHight;
+            if (isClose) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        // auto close menu when click in element
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        for (var i = 0;i < menuItems.length; i++) {
+            var meniItem = menuItems[i];
+
+            meniItem.onclick = function() {
+                header.style.height = null;
+            }
+        }
+    </script>
+    <!-- End: mobile menu buton click event -->
 
     <!-- Begin: Modal buy tickets -->
     <div class="modal js-modal">
